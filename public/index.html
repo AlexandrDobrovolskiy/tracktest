@@ -24,6 +24,20 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script type="text/javascript">
+      var _rio = _rio || [];
+      (function() {
+        var a,b,c;a=function(f){return function(){_rio.push([f].
+        concat(Array.prototype.slice.call(arguments,0)))}};b=["load","track","page","setId"];for(c=0;c<b.length;c++){_rio[b[c]]=a(b[c])}
+        var t = document.createElement('script'),
+                s = document.getElementsByTagName('script')[0];
+        t.async = true;
+        t.id = 'rio-tracker';
+        t.setAttribute('data-site-id', 'Z7kA3n1EbuHxej6bsCH8cZm2ln2HO2zeHOQgyImsLBSp6V7AV1MSmAdF96bh');
+        t.src = 'https://riup-public.s3.eu-central-1.amazonaws.com/track-dev.js';
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
     <title>React App</title>
   </head>
   <body>
