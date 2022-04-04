@@ -7,9 +7,9 @@ function App() {
   const [id, setId] = useState( (Math.random() * 1000).toFixed(0));
 
   useEffect(() => {
-    window._rio.load();
+    // window._rio.load();
     setTimeout(() => {
-      window._rio.subscribe();
+      // window._rio.subscribe();
     }, 2000);
     // window._rio.setId(id)
   }, []);
