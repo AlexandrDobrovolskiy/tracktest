@@ -57,7 +57,7 @@ function App() {
         </button>
         <div>Id: {id} <button onClick={handleIdChange}>change</button></div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <input value={pingInterval} placeholder="Ping interval" onChange={handleEmailChange} />
+          <input value={pingInterval} placeholder="Ping interval" onChange={handlePingIntervalChange} />
           <button onClick={handleSubmit}>Reinit</button>
         </div>
       </header>
