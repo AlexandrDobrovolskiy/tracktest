@@ -3,10 +3,15 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [pingInterval, setPingInterval] = useState('');
+  const [gaID, setGaID] = useState('');
   const [id, setId] = useState( (Math.random() * 1000).toFixed(0));
 
   const handlePingIntervalChange = ({ target: { value } }) => {
     setPingInterval(+value);
+  };
+
+  const handleGAIDChange = ({ target: { value } }) => {
+    setGaID(value);
   };
 
   const handleIdChange = () => {
@@ -18,6 +23,7 @@ function App() {
   const handleSubmit = () => {
     window._rio.init({
       ping_interval: pingInterval,
+      gaMeasurementId: gaID,
     });
   };
 
@@ -58,6 +64,7 @@ function App() {
         <div>Id: {id} <button onClick={handleIdChange}>change</button></div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <input value={pingInterval} placeholder="Ping interval" onChange={handlePingIntervalChange} />
+          <input value={gaID} placeholder="GA ID" onChange={handleGAIDChange} />
           <button onClick={handleSubmit}>Reinit</button>
         </div>
       </header>
