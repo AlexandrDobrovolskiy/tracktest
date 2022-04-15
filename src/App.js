@@ -2,24 +2,11 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('')
+  const [pingInterval, setPingInterval] = useState('');
   const [id, setId] = useState( (Math.random() * 1000).toFixed(0));
 
-  useEffect(() => {
-    // window._rio.load();
-    setTimeout(() => {
-      // window._rio.subscribe();
-    }, 2000);
-    // window._rio.setId(id)
-  }, []);
-
-  const handleEmailChange = ({ target: { value } }) => {
-    setEmail(value);
-  };
-
-  const handlePhoneChange = ({ target: { value } }) => {
-    setPhone(value);
+  const handlePingIntervalChange = ({ target: { value } }) => {
+    setPingInterval(+value);
   };
 
   const handleIdChange = () => {
@@ -29,9 +16,8 @@ function App() {
   }
 
   const handleSubmit = () => {
-    window._rio.identify({
-      email,
-      phone,
+    window._rio.init({
+      ping_interval: pingInterval,
     });
   };
 
@@ -39,7 +25,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Retainly track test San
+          Retainly track test
         </p>
         <button
           onClick={() => {
@@ -48,11 +34,31 @@ function App() {
         >
           event
         </button>
+        <button
+          onClick={() => {
+            window._rio.startSession();
+          }}
+        >
+          start session
+        </button>
+        <button
+          onClick={() => {
+            window._rio.endSession();
+          }}
+        >
+          end session
+        </button>
+        <button
+          onClick={() => {
+            window._rio.subscribe();
+          }}
+        >
+          subscribe
+        </button>
         <div>Id: {id} <button onClick={handleIdChange}>change</button></div>
-        <div>
-          <input value={email} placeholder="Email" onChange={handleEmailChange} />
-          <input value={phone} placeholder="Phone" onChange={handlePhoneChange} />
-          <button onClick={handleSubmit}>login</button>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <input value={pingInterval} placeholder="Ping interval" onChange={handleEmailChange} />
+          <button onClick={handleSubmit}>Reinit</button>
         </div>
       </header>
     </div>
